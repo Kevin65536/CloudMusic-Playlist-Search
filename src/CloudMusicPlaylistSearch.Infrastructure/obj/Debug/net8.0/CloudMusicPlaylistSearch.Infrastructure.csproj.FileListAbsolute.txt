@@ -1,0 +1,15 @@
+C:\Users\qdsxh\Desktop\toys\CloudMusic Playlist Search\src\CloudMusicPlaylistSearch.Infrastructure\bin\Debug\net8.0\CloudMusicPlaylistSearch.Infrastructure.deps.json
+C:\Users\qdsxh\Desktop\toys\CloudMusic Playlist Search\src\CloudMusicPlaylistSearch.Infrastructure\bin\Debug\net8.0\CloudMusicPlaylistSearch.Infrastructure.dll
+C:\Users\qdsxh\Desktop\toys\CloudMusic Playlist Search\src\CloudMusicPlaylistSearch.Infrastructure\bin\Debug\net8.0\CloudMusicPlaylistSearch.Infrastructure.pdb
+C:\Users\qdsxh\Desktop\toys\CloudMusic Playlist Search\src\CloudMusicPlaylistSearch.Infrastructure\bin\Debug\net8.0\CloudMusicPlaylistSearch.Core.dll
+C:\Users\qdsxh\Desktop\toys\CloudMusic Playlist Search\src\CloudMusicPlaylistSearch.Infrastructure\bin\Debug\net8.0\CloudMusicPlaylistSearch.Core.pdb
+C:\Users\qdsxh\Desktop\toys\CloudMusic Playlist Search\src\CloudMusicPlaylistSearch.Infrastructure\obj\Debug\net8.0\CloudMusicPlaylistSearch.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\qdsxh\Desktop\toys\CloudMusic Playlist Search\src\CloudMusicPlaylistSearch.Infrastructure\obj\Debug\net8.0\CloudMusicPlaylistSearch.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\qdsxh\Desktop\toys\CloudMusic Playlist Search\src\CloudMusicPlaylistSearch.Infrastructure\obj\Debug\net8.0\CloudMusicPlaylistSearch.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\qdsxh\Desktop\toys\CloudMusic Playlist Search\src\CloudMusicPlaylistSearch.Infrastructure\obj\Debug\net8.0\CloudMusicPlaylistSearch.Infrastructure.AssemblyInfo.cs
+C:\Users\qdsxh\Desktop\toys\CloudMusic Playlist Search\src\CloudMusicPlaylistSearch.Infrastructure\obj\Debug\net8.0\CloudMusicPlaylistSearch.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\qdsxh\Desktop\toys\CloudMusic Playlist Search\src\CloudMusicPlaylistSearch.Infrastructure\obj\Debug\net8.0\CloudMus.8793C952.Up2Date
+C:\Users\qdsxh\Desktop\toys\CloudMusic Playlist Search\src\CloudMusicPlaylistSearch.Infrastructure\obj\Debug\net8.0\CloudMusicPlaylistSearch.Infrastructure.dll
+C:\Users\qdsxh\Desktop\toys\CloudMusic Playlist Search\src\CloudMusicPlaylistSearch.Infrastructure\obj\Debug\net8.0\refint\CloudMusicPlaylistSearch.Infrastructure.dll
+C:\Users\qdsxh\Desktop\toys\CloudMusic Playlist Search\src\CloudMusicPlaylistSearch.Infrastructure\obj\Debug\net8.0\CloudMusicPlaylistSearch.Infrastructure.pdb
+C:\Users\qdsxh\Desktop\toys\CloudMusic Playlist Search\src\CloudMusicPlaylistSearch.Infrastructure\obj\Debug\net8.0\ref\CloudMusicPlaylistSearch.Infrastructure.dll

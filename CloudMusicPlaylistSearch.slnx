@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/CloudMusicPlaylistSearch.App/CloudMusicPlaylistSearch.App.csproj" />
+    <Project Path="src/CloudMusicPlaylistSearch.Core/CloudMusicPlaylistSearch.Core.csproj" />
+    <Project Path="src/CloudMusicPlaylistSearch.Infrastructure/CloudMusicPlaylistSearch.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/CloudMusicPlaylistSearch.Tests/CloudMusicPlaylistSearch.Tests.csproj" />
+  </Folder>
+</Solution>
