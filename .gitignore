@@ -1,2 +1,7 @@
-.vscode
-tests/
+.vscode/*
+!.vscode/launch.json
+!.vscode/tasks.json
+bin/
+obj/
+*.user
+*.suo

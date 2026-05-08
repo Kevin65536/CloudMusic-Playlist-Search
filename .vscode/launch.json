@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug CloudMusic Playlist Search",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build-app",
+      "program": "${workspaceFolder}/src/CloudMusicPlaylistSearch.App/bin/Debug/net8.0-windows/CloudMusicPlaylistSearch.App.exe",
+      "cwd": "${workspaceFolder}/src/CloudMusicPlaylistSearch.App/bin/Debug/net8.0-windows",
+      "stopAtEntry": false,
+      "justMyCode": true
+    }
+  ]
+}
