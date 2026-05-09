@@ -5,3 +5,5 @@ bin/
 obj/
 *.user
 *.suo
+
+docs/cloudmusic-current.png

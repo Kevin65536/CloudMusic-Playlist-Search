@@ -1,5 +1,6 @@
 ﻿using CloudMusicPlaylistSearch.Core.Models;
 using CloudMusicPlaylistSearch.Core.Search;
+using CloudMusicPlaylistSearch.Infrastructure.Playback;
 using CloudMusicPlaylistSearch.Infrastructure.Playlist;
 using System.Windows;
 using System.Windows.Input;
@@ -10,10 +11,12 @@ public partial class MainWindow : Window
 {
     private readonly PlaylistSnapshotLoader _snapshotLoader = new();
     private readonly PlaylistSearchEngine _searchEngine = new();
+    private readonly CloudMusicTrackActivator _trackActivator = new();
     private readonly string _playlistPath = CloudMusicPaths.PlayingListPath;
 
     private PlaylistSnapshot? _snapshot;
     private bool _isLoading;
+    private bool _isActivatingTrack;
 
     public MainWindow()
     {
@@ -43,6 +46,26 @@ public partial class MainWindow : Window
 
     private void SearchTextBox_OnKeyDown(object sender, KeyEventArgs e)
     {
+        if (_isActivatingTrack)
+        {
+            e.Handled = true;
+            return;
+        }
+
+        if (e.Key == Key.Enter)
+        {
+            var track = ResultsListView.SelectedItem as PlaylistTrack
+                ?? ResultsListView.Items.OfType<PlaylistTrack>().FirstOrDefault();
+
+            if (track is not null)
+            {
+                _ = ActivateTrackAsync(track);
+                e.Handled = true;
+            }
+
+            return;
+        }
+
         if (e.Key != Key.Down || ResultsListView.Items.Count == 0)
         {
             return;
@@ -55,7 +78,10 @@ public partial class MainWindow : Window
 
     private void ResultsListView_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
     {
-        PreviewTrackActivation();
+        if (ResultsListView.SelectedItem is PlaylistTrack track)
+        {
+            _ = ActivateTrackAsync(track);
+        }
     }
 
     private void ResultsListView_OnKeyDown(object sender, KeyEventArgs e)
@@ -65,7 +91,11 @@ public partial class MainWindow : Window
             return;
         }
 
-        PreviewTrackActivation();
+        if (ResultsListView.SelectedItem is PlaylistTrack track)
+        {
+            _ = ActivateTrackAsync(track);
+        }
+
         e.Handled = true;
     }
 
@@ -83,7 +113,7 @@ public partial class MainWindow : Window
                 : snapshot.SourceName;
 
             FooterTextBlock.Text =
-                "本轮原型已打通本地文件加载和内存搜索。覆盖层附着与歌曲激活将在后续阶段接入。";
+                "双击结果或按 Enter 会尝试切换到对应歌曲。当前版本优先依赖 CloudMusic 中已打开的播放列表面板。";
 
             ApplySearch();
 
@@ -118,15 +148,39 @@ public partial class MainWindow : Window
         ResultsListView.SelectedIndex = -1;
     }
 
-    private void PreviewTrackActivation()
+    private async Task ActivateTrackAsync(PlaylistTrack track)
     {
-        if (ResultsListView.SelectedItem is not PlaylistTrack track)
+        if (_snapshot is null || _isLoading || _isActivatingTrack)
         {
             return;
         }
 
-        FooterTextBlock.Text =
-            $"已选中 {track.Name} - {track.Artist}。实际切歌执行链将在下一阶段接入。";
+        _isActivatingTrack = true;
+        ReloadButton.IsEnabled = false;
+        SearchTextBox.IsEnabled = false;
+        ResultsListView.IsEnabled = false;
+        StatusValueTextBlock.Text = $"正在尝试切换到 {track.Name} - {track.Artist}...";
+
+        try
+        {
+            var result = await _trackActivator.ActivateTrackAsync(track);
+            FooterTextBlock.Text = result.Message;
+            StatusValueTextBlock.Text = result.IsSuccess
+                ? $"已切换到 {track.Name} - {track.Artist}"
+                : $"切歌失败：{result.Message}";
+        }
+        catch (Exception ex)
+        {
+            FooterTextBlock.Text = $"切歌执行异常：{ex.Message}";
+            StatusValueTextBlock.Text = "切歌失败";
+        }
+        finally
+        {
+            _isActivatingTrack = false;
+            ReloadButton.IsEnabled = !_isLoading;
+            SearchTextBox.IsEnabled = !_isLoading;
+            ResultsListView.IsEnabled = !_isLoading;
+        }
     }
 
     private void SetLoadingState(bool isLoading, string? statusMessage = null)
